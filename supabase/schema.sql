@@ -7,4 +7,6 @@ create table if not exists public.seteuk_drafts (
   created_at timestamptz not null default now()
 );
 alter table public.seteuk_drafts enable row level security;
--- Add authenticated-user policies when auth is enabled in the deployment.
+grant select, insert on public.seteuk_drafts to anon, authenticated;
+create policy "public can read drafts" on public.seteuk_drafts for select to anon, authenticated using (true);
+create policy "public can create drafts" on public.seteuk_drafts for insert to anon, authenticated with check (true);

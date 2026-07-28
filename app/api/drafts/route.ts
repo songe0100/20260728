@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const endpoint = url ? `${url}/rest/v1/seteuk_drafts` : "";
 
 export async function GET() {
